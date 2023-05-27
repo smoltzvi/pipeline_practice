@@ -1,0 +1,13 @@
+steps:
+  # list contents of bucket
+- name: "gcr.io/cloud-builders/cloudsdktool/cloud-sdk"
+  args: ["gcloud", "storage", "ls", "gs://keyuna_bucket/*"]
+  # list all users in GCP Project
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["projects", "get-iam-policy", "sandbox-io-289003"]
+  # list all pods in kubernetes
+- name: "gcr.io/cloud-builders/cloudsdktools/cloud-sdk"
+  args: ["kubectl", "get pods"]
+  # create namespace
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["kubectl", "create", "ns", "kimo_stages"]
