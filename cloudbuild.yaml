@@ -7,7 +7,9 @@ steps:
   args: ["projects", "get-iam-policy", "sandbox-io-289003"]
   # list all pods in kubernetes
 - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-  args: ["kubectl", "get pods"]
+  entrypoint: "kubectl"
+  args: ["get", "pods"]
   # create namespace
-- name: "gcr.io/cloud-builders/gcloud"
+- name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  entrypoint: "kubectl"
   args: ["kubectl", "create", "ns", "kimo_stages"]
